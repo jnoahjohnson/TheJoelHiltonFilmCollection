@@ -9,6 +9,8 @@ namespace TheJoelHiltonFilmCollection.Models
 {
     public class Movie
     {
+        [Key]
+        public int MovieId { get; set; }
         [Required]
         public string Category { get; set; }
         [Required]

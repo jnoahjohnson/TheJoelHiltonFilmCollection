@@ -9,37 +9,20 @@ using TheJoelHiltonFilmCollection.Models;
 
 namespace TheJoelHiltonFilmCollection.Controllers
 {
+    // Home controller just to route to the home page and podcast page
+    // Movie CRUD operations are dealt with in the movies controller
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IFilmRepository _repository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IFilmRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult AddMovie()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult AddMovie(Movie movie)
-        {
-            TempStorage.AddMovie(movie);
-            return View("Confirmation", movie);
-        }
-        public IActionResult ViewMovies()
-        {
-            return View(TempStorage.Movies.Where(movie => movie.Title!="Independence Day"));
-        }
-
-        public IActionResult Confirmation()
         {
             return View();
         }

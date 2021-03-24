@@ -6,8 +6,8 @@
     <h1 class="display-4">Welcome to the Joel Hilton Film Collection</h1>
     <img src="~/img/JoelHilton.jpg" class="img-fluid mb-4"/>
     <div class="flex-column">
-        <a asp-action="ViewMovies" class="btn btn-outline-primary">View Movies</a>
+        <a asp-controller="Movies" asp-action="Index" class="btn btn-outline-primary">View Films</a>
         <a asp-action="Podcast" class="btn btn-outline-primary">Checkout Podcast</a>
-        <a asp-action="Add Movie" class="btn btn-outline-primary">Add Movie</a>
+        <a asp-controller="Movies" asp-action="Create" class="btn btn-outline-primary">Add Film</a>
     </div>
 </div>

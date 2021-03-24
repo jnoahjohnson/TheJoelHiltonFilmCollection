@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using TheJoelHiltonFilmCollection.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TheJoelHiltonFilmCollection
 {
@@ -24,6 +21,16 @@ namespace TheJoelHiltonFilmCollection
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // SQLite Configuration
+            services.AddDbContext<FilmDbContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:FilmConnection"]);
+            });
+
+            // Add repository
+            services.AddScoped<IFilmRepository, EFFilmRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
